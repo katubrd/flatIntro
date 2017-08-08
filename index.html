@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <svg class="lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398 398">
+      <g fill="none" stroke="#4d4d4d" stroke-width="3" stroke-miterlimit="10">
+        <path d="M1.5 1.5h395v395H1.5z"/>
+        <path d="M11.38 11.38h375.25v375.25H11.38z"/>
+        <path d="M20.76 20.76h356.49v356.49H20.76z"/>
+      </g>
+    </svg>
+  </div>
+  <script src="js/anime.min.js"></script>
+  <script>
+    var pathEls = document.querySelectorAll('path');
+    for (var i = 0; i < pathEls.length; i++) {
+      var pathEl = pathEls[i];
+      var offset = anime.setDashoffset(pathEl);
+      pathEl.setAttribute('stroke-dashoffset', offset);
+      anime({
+        targets: pathEl,
+        strokeDashoffset: [offset, 0],
+        duration: anime.random(1000, 3000),
+        delay: anime.random(0, 2000),
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine',
+        autoplay: true
+      });
+    }
+  </script>
+</body>
+</html>
